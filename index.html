@@ -4,24 +4,37 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Darino Forest Estate</title>
-    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600&family=Montserrat:wght@200;300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Space+Grotesk:wght@300;400;500;600&display=swap" rel="stylesheet">
     <style>
         :root {
-            --bg-dark: #121416;
-            --surface: #1C1F23;
-            --gold: #C5A572;
-            --gold-light: #E2C79A;
-            --text-main: #F3F0EB;
-            --text-muted: #8B8E92;
-            --green-accent: #2A3B33;
+            /* Colors from Harness.io Reference */
+            --color-void-canvas: #070707;
+            --color-carbon-plate: #0d0e12;
+            --color-obsidian: #141418;
+            --color-iron-edge: #2e3038;
+            --color-pure-white: #ffffff;
+            --color-fog: #d9dae5;
+            --color-graphite: #aeaeb7;
+            --color-slate-mute: #a2a4a9;
+            --color-cinder: #60606c;
+            --color-phosphor-mint: #70dcd3;
+            --color-signal-blue: #0092e4;
+            
+            /* Typography */
+            --font-geist: 'Inter', ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+            --font-calsans: 'Space Grotesk', ui-sans-serif, system-ui, sans-serif;
         }
 
         * { margin: 0; padding: 0; box-sizing: border-box; }
         html { scroll-behavior: smooth; }
         body {
-            font-family: 'Montserrat', sans-serif;
-            background-color: var(--bg-dark);
-            color: var(--text-main);
+            font-family: var(--font-geist);
+            background-color: var(--color-void-canvas);
+            color: var(--color-pure-white);
+            font-weight: 400;
+            letter-spacing: -0.017em;
         }
 
         .slide {
@@ -31,127 +44,164 @@
             flex-direction: column;
             align-items: center;
             justify-content: center;
-            padding: 6% 8%;
+            padding: 80px 24px;
             position: relative;
             text-align: center;
-            border-bottom: 1px solid rgba(197, 165, 114, 0.1);
+            max-width: 1200px;
+            margin: 0 auto;
         }
 
-        h1, h2, h3 { font-family: 'Cormorant Garamond', serif; font-weight: 400; line-height: 1.1; }
-        .highlight { color: var(--gold); }
+        h1, h2, h3 { 
+            font-family: var(--font-calsans); 
+            font-weight: 300; 
+            line-height: 1.1; 
+            letter-spacing: 0.056em; /* Positive tracking */
+        }
+        .highlight { color: var(--color-phosphor-mint); }
 
+        /* Ghost Pill (Tags) */
         .tag {
-            border: 1px solid var(--gold);
-            color: var(--gold);
-            padding: 8px 20px;
-            font-size: 0.8rem;
+            border: 1px solid var(--color-pure-white);
+            color: var(--color-pure-white);
+            padding: 8px 24px;
+            font-size: 12px;
             text-transform: uppercase;
-            letter-spacing: 2px;
+            letter-spacing: 0.094em;
             display: inline-block;
-            margin-bottom: 25px;
+            margin-bottom: 32px;
+            border-radius: 800px;
+            font-weight: 500;
         }
 
+        /* Filled Pill (CTA) */
         .cta-btn {
             display: inline-block;
-            background: var(--gold);
-            color: #121416;
-            font-family: 'Montserrat', sans-serif;
-            font-weight: 600;
-            font-size: 1rem;
-            letter-spacing: 1px;
-            text-transform: uppercase;
+            background: var(--color-pure-white);
+            color: var(--color-void-canvas);
+            font-family: var(--font-geist);
+            font-weight: 500;
+            font-size: 16px;
+            letter-spacing: -0.017em;
             text-decoration: none;
-            padding: 20px 50px;
+            padding: 12px 24px;
             margin-top: 40px;
-            transition: background 0.3s;
+            border-radius: 800px;
+            box-shadow: rgba(0, 0, 0, 0.05) 2px 2px 0px 0px, 
+                        inset 0px -1px 0px 0px var(--color-pure-white), 
+                        inset 1px 0px 0px 0px var(--color-pure-white), 
+                        inset -1px 0px 0px 0px var(--color-pure-white), 
+                        inset 0px 1px 0px 0px var(--color-pure-white);
         }
 
+        /* Dark Surface Card */
         .premium-box {
-            background: var(--surface);
-            border: 1px solid rgba(197, 165, 114, 0.2);
-            padding: 50px;
+            background: var(--color-carbon-plate);
+            border: 1px solid var(--color-fog); /* Light border on dark surface */
+            border-radius: 20px;
+            padding: 24px;
             width: 100%;
             max-width: 900px;
             margin: 20px auto;
+            text-align: left;
         }
 
-        ul.elegant-list { list-style: none; text-align: left; margin-top: 20px; }
+        ul.elegant-list { list-style: none; margin-top: 20px; }
         ul.elegant-list li {
-            font-size: 1.2rem;
-            margin-bottom: 20px;
-            padding-left: 30px;
+            font-size: 16px;
+            margin-bottom: 16px;
+            padding-left: 24px;
             position: relative;
-            font-weight: 300;
+            font-weight: 400;
             line-height: 1.5;
+            color: var(--color-pure-white);
         }
         ul.elegant-list li::before {
             content: '';
             position: absolute;
             left: 0;
-            top: 10px;
-            width: 15px;
-            height: 1px;
-            background: var(--gold);
+            top: 8px;
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: var(--color-phosphor-mint); /* Mint dot */
         }
 
         .s1 {
-            background: linear-gradient(to bottom, rgba(18, 20, 22, 0.7), rgba(18, 20, 22, 0.95)), url('https://images.unsplash.com/photo-1500382017468-9049fed747ef?q=80&w=2000&auto=format&fit=crop') center/cover no-repeat;
+            background: linear-gradient(to bottom, rgba(7, 7, 7, 0.85), rgba(7, 7, 7, 0.95)), url('https://images.unsplash.com/photo-1500382017468-9049fed747ef?q=80&w=2000&auto=format&fit=crop') center/cover no-repeat;
+            min-height: 100vh;
+            max-width: 100%;
         }
-        .s1 h1 { font-size: 4.5rem; margin-bottom: 20px; }
-        .s1 p { font-size: 1.3rem; font-weight: 300; max-width: 700px; margin: 0 auto; opacity: 0.85; line-height: 1.6; }
+        .s1 h1 { font-size: 64px; margin-bottom: 24px; font-weight: 300; }
+        .s1 p { font-size: 18px; font-weight: 300; max-width: 600px; margin: 0 auto; opacity: 0.8; line-height: 1.5; }
 
-        h2 { font-size: 3rem; margin-bottom: 30px; max-width: 800px; }
+        h2 { font-size: 56px; margin-bottom: 32px; max-width: 800px; }
         
         .grid-cards { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; width: 100%; max-width: 900px; }
         .stat-card {
-            background: var(--surface);
-            border-top: 3px solid var(--gold);
-            padding: 40px 20px;
+            background: var(--color-carbon-plate);
+            border: 1px solid var(--color-fog);
+            border-radius: 20px;
+            padding: 24px;
         }
-        .stat-card .num { font-size: 3rem; font-family: 'Cormorant Garamond', serif; color: var(--text-main); }
-        .stat-card .desc { font-size: 0.9rem; text-transform: uppercase; letter-spacing: 1px; color: var(--text-muted); margin-top: 10px; }
+        .stat-card .num { font-size: 32px; font-family: var(--font-calsans); color: var(--color-pure-white); letter-spacing: 0.056em; }
+        .stat-card .desc { font-size: 14px; color: var(--color-graphite); margin-top: 8px; }
 
         .map-placeholder, .photo-placeholder {
             width: 100%;
             max-width: 800px;
             height: 400px;
-            background: var(--surface);
-            border: 1px dashed rgba(197, 165, 114, 0.3);
+            background: var(--color-carbon-plate);
+            border: 1px solid var(--color-fog);
+            border-radius: 20px;
             display: flex;
             align-items: center;
             justify-content: center;
-            color: var(--text-muted);
-            font-size: 0.9rem;
+            color: var(--color-cinder);
+            font-size: 14px;
             text-transform: uppercase;
-            margin-top: 30px;
+            margin-top: 32px;
             background-size: cover;
             background-position: center;
         }
 
-        .s6 { background: var(--green-accent); }
-        .price-value {
-            font-size: 4rem;
-            font-family: 'Cormorant Garamond', serif;
-            color: var(--gold);
-            margin-bottom: 10px;
+        /* Phosphor Accent Card for Price */
+        .s6 .premium-box {
+            background: var(--color-phosphor-mint);
+            border: 1px solid var(--color-phosphor-mint);
+            color: var(--color-void-canvas);
+            text-align: center;
+            padding: 48px 24px;
         }
-        .price-sub { font-size: 1rem; color: var(--text-muted); text-transform: uppercase; letter-spacing: 1px; margin-bottom: 30px; }
+        .s6 h2 { color: var(--color-void-canvas); font-size: 32px; margin-bottom: 16px; }
+        .price-value {
+            font-size: 56px;
+            font-family: var(--font-calsans);
+            color: var(--color-void-canvas);
+            margin-bottom: 10px;
+            letter-spacing: 0.056em;
+        }
+        .price-sub { font-size: 14px; color: var(--color-void-canvas); opacity: 0.8; margin-bottom: 32px; }
+        .s6 .cta-btn {
+            background: var(--color-void-canvas);
+            color: var(--color-pure-white);
+            box-shadow: none;
+        }
 
-        .contact-info { display: flex; flex-direction: column; gap: 10px; }
-        .contact-info .name { font-size: 1.5rem; font-family: 'Cormorant Garamond', serif; color: var(--gold); }
-        .contact-info .phone { font-size: 2rem; font-weight: 300; color: var(--text-main); text-decoration: none; }
+        .contact-info { display: flex; flex-direction: column; gap: 8px; margin-top: 32px; }
+        .contact-info .name { font-size: 24px; font-family: var(--font-calsans); color: var(--color-phosphor-mint); letter-spacing: 0.056em; }
+        .contact-info .phone { font-size: 32px; font-weight: 300; color: var(--color-pure-white); text-decoration: none; letter-spacing: -0.017em; }
 
         @media (max-width: 768px) {
-            .slide { padding: 15% 6%; }
-            .s1 h1 { font-size: 2.8rem; }
-            .s1 p { font-size: 1.1rem; }
-            h2 { font-size: 2rem; }
-            .premium-box { padding: 30px; }
-            ul.elegant-list li { font-size: 1rem; }
+            .slide { padding: 64px 16px; }
+            .s1 h1 { font-size: 40px; }
+            .s1 p { font-size: 16px; }
+            h2 { font-size: 36px; }
+            .premium-box { padding: 20px; }
+            ul.elegant-list li { font-size: 15px; }
             .grid-cards { grid-template-columns: 1fr; }
-            .cta-btn { width: 100%; padding: 15px; }
-            .price-value { font-size: 3rem; }
-            .contact-info .phone { font-size: 1.5rem; }
+            .cta-btn { width: 100%; padding: 12px; }
+            .price-value { font-size: 40px; }
+            .contact-info .phone { font-size: 24px; }
         }
     </style>
 </head>
@@ -182,8 +232,7 @@
     <section class="slide">
         <div class="tag">Расположение</div>
         <h2>В сердце Рублёвки</h2>
-        <p style="font-size: 1.2rem; font-weight: 300; max-width: 600px; opacity: 0.85; margin-bottom: 20px;">Объект находится в 20 км от МКАД. Удобный выезд обеспечивает быстрый доступ к столице в любое время суток.</p>
-        <!-- Вставьте скрин кадастровой карты: замените url('') на url('файл.jpg') -->
+        <p style="font-size: 16px; font-weight: 400; max-width: 600px; opacity: 0.8; margin-bottom: 8px; color: var(--color-graphite);">Объект находится в 20 км от МКАД. Удобный выезд обеспечивает быстрый доступ к столице в любое время суток.</p>
         <div class="map-placeholder" style="background-image: url('');">
             <span>Скриншот кадастровой карты</span>
         </div>
@@ -239,8 +288,7 @@
     <section class="slide">
         <div class="tag">Атмосфера</div>
         <h2>Природа без компромиссов</h2>
-        <p style="font-size: 1.2rem; font-weight: 300; max-width: 600px; opacity: 0.85; margin-bottom: 20px;">Высокие сосны, чистый воздух и живописный рельеф. Место, где можно создать дом, который станет семейной реликвией на поколения вперед.</p>
-        <!-- Вставьте реальное фото сосен: замените url('') на url('pines.jpg') -->
+        <p style="font-size: 16px; font-weight: 400; max-width: 600px; opacity: 0.8; margin-bottom: 8px; color: var(--color-graphite);">Высокие сосны, чистый воздух и живописный рельеф. Место, где можно создать дом, который станет семейной реликвией на поколения вперед.</p>
         <div class="photo-placeholder" style="background-image: url(''); height: 50vh;">
             <span>Фотография участка (сосны)</span>
         </div>
@@ -288,20 +336,22 @@
     <!-- 11. Стоимость -->
     <section class="slide s6" id="price">
         <div class="tag">Предложение</div>
-        <h2>Стоимость объекта</h2>
-        <div class="price-value">280 000 000 ₽</div>
-        <div class="price-sub">4 участка · 100 соток · ИЖС · + право аренды 15 Га леса</div>
-        <a href="#contact" class="cta-btn">Записаться на закрытый показ</a>
+        <div class="premium-box">
+            <h2>Стоимость объекта</h2>
+            <div class="price-value">280 000 000 ₽</div>
+            <div class="price-sub">4 участка · 100 соток · ИЖС · + право аренды 15 Га леса</div>
+            <a href="#contact" class="cta-btn">Записаться на закрытый показ</a>
+        </div>
     </section>
 
     <!-- 12. Контакты -->
     <section class="slide" id="contact">
         <div class="tag">Контакты</div>
         <h2>Ваше следующее поколение недвижимости</h2>
-        <p style="font-size: 1.2rem; font-weight: 300; opacity: 0.8; max-width: 600px; margin-bottom: 40px;">Свяжитесь с нами для организации приватного просмотра и получения подробной информации.</p>
+        <p style="font-size: 16px; font-weight: 400; max-width: 600px; opacity: 0.8; color: var(--color-graphite);">Свяжитесь с нами для организации приватного просмотра и получения подробной информации.</p>
         
         <div class="contact-info">
-            <span style="font-size: 0.9rem; text-transform: uppercase; letter-spacing: 1px; color: var(--text-muted);">Ваш персональный брокер</span>
+            <span style="font-size: 14px; text-transform: uppercase; letter-spacing: 0.094em; color: var(--color-cinder);">Ваш персональный брокер</span>
             <span class="name">Татьяна</span>
             <a href="tel:+79262242719" class="phone">+7 926 224-27-19</a>
         </div>
