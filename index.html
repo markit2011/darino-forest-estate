@@ -9,7 +9,6 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Space+Grotesk:wght@300;400;500;600&display=swap" rel="stylesheet">
     <style>
         :root {
-            /* Colors from Harness.io Reference */
             --color-void-canvas: #070707;
             --color-carbon-plate: #0d0e12;
             --color-obsidian: #141418;
@@ -22,7 +21,6 @@
             --color-phosphor-mint: #70dcd3;
             --color-signal-blue: #0092e4;
             
-            /* Typography */
             --font-geist: 'Inter', ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
             --font-calsans: 'Space Grotesk', ui-sans-serif, system-ui, sans-serif;
         }
@@ -55,11 +53,19 @@
             font-family: var(--font-calsans); 
             font-weight: 300; 
             line-height: 1.1; 
-            letter-spacing: 0.056em; /* Positive tracking */
+            letter-spacing: 0.056em; 
         }
+        
+        /* Мощный H1 */
+        h1 { 
+            font-size: 80px; 
+            font-weight: 500; 
+            line-height: 0.96; 
+            text-shadow: 0 4px 30px rgba(0,0,0,0.6); 
+        }
+
         .highlight { color: var(--color-phosphor-mint); }
 
-        /* Ghost Pill (Tags) */
         .tag {
             border: 1px solid var(--color-pure-white);
             color: var(--color-pure-white);
@@ -73,7 +79,6 @@
             font-weight: 500;
         }
 
-        /* Filled Pill (CTA) */
         .cta-btn {
             display: inline-block;
             background: var(--color-pure-white);
@@ -93,12 +98,11 @@
                         inset 0px 1px 0px 0px var(--color-pure-white);
         }
 
-        /* Dark Surface Card */
         .premium-box {
             background: var(--color-carbon-plate);
-            border: 1px solid var(--color-fog); /* Light border on dark surface */
+            border: 1px solid var(--color-fog); 
             border-radius: 20px;
-            padding: 24px;
+            padding: 32px;
             width: 100%;
             max-width: 900px;
             margin: 20px auto;
@@ -123,48 +127,69 @@
             width: 8px;
             height: 8px;
             border-radius: 50%;
-            background: var(--color-phosphor-mint); /* Mint dot */
+            background: var(--color-phosphor-mint); 
         }
 
+        /* Обложка с левым выравниванием и фоном */
         .s1 {
-            background: linear-gradient(to bottom, rgba(7, 7, 7, 0.85), rgba(7, 7, 7, 0.95)), url('https://images.unsplash.com/photo-1500382017468-9049fed747ef?q=80&w=2000&auto=format&fit=crop') center/cover no-repeat;
+            background: linear-gradient(100deg, rgba(7, 7, 7, 0.95) 0%, rgba(7, 7, 7, 0.7) 60%, rgba(7, 7, 7, 0.3) 100%), url('cover.jpeg') center/cover no-repeat;
             min-height: 100vh;
             max-width: 100%;
+            display: flex;
+            align-items: center;
+            text-align: left;
+            padding: 80px 10%;
         }
-        .s1 h1 { font-size: 64px; margin-bottom: 24px; font-weight: 300; }
-        .s1 p { font-size: 18px; font-weight: 300; max-width: 600px; margin: 0 auto; opacity: 0.8; line-height: 1.5; }
+        .s1 h1 { font-size: 80px; margin-bottom: 24px; max-width: 900px; }
+        .s1 p { font-size: 18px; font-weight: 400; max-width: 500px; margin-left: 0; opacity: 0.9; line-height: 1.5; }
+        .s1 .tag { margin-left: 0; }
+        .s1 .cta-btn { margin-left: 0; }
 
-        h2 { font-size: 56px; margin-bottom: 32px; max-width: 800px; }
+        h2 { font-size: 48px; margin-bottom: 32px; max-width: 900px; }
         
         .grid-cards { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; width: 100%; max-width: 900px; }
         .stat-card {
             background: var(--color-carbon-plate);
             border: 1px solid var(--color-fog);
             border-radius: 20px;
-            padding: 24px;
+            padding: 32px 24px;
         }
-        .stat-card .num { font-size: 32px; font-family: var(--font-calsans); color: var(--color-pure-white); letter-spacing: 0.056em; }
-        .stat-card .desc { font-size: 14px; color: var(--color-graphite); margin-top: 8px; }
+        .stat-card .num { font-size: 40px; font-family: var(--font-calsans); color: var(--color-pure-white); letter-spacing: 0.056em; }
+        .stat-card .desc { font-size: 14px; color: var(--color-graphite); margin-top: 8px; text-transform: uppercase; letter-spacing: 0.042em; }
 
+        /* Сетка для карт */
+        .maps-grid {
+            display: flex;
+            gap: 20px;
+            width: 100%;
+            max-width: 1000px;
+            margin-top: 32px;
+        }
         .map-placeholder, .photo-placeholder {
             width: 100%;
-            max-width: 800px;
-            height: 400px;
             background: var(--color-carbon-plate);
             border: 1px solid var(--color-fog);
             border-radius: 20px;
             display: flex;
-            align-items: center;
-            justify-content: center;
-            color: var(--color-cinder);
-            font-size: 14px;
+            align-items: flex-end;
+            justify-content: flex-start;
+            padding: 16px;
+            color: var(--color-pure-white);
+            font-size: 12px;
             text-transform: uppercase;
-            margin-top: 32px;
             background-size: cover;
             background-position: center;
         }
+        .maps-grid .map-placeholder {
+            flex: 1;
+            height: 350px;
+        }
+        .photo-placeholder {
+            max-width: 900px;
+            height: 60vh;
+            margin-top: 32px;
+        }
 
-        /* Phosphor Accent Card for Price */
         .s6 .premium-box {
             background: var(--color-phosphor-mint);
             border: 1px solid var(--color-phosphor-mint);
@@ -187,21 +212,24 @@
             box-shadow: none;
         }
 
-        .contact-info { display: flex; flex-direction: column; gap: 8px; margin-top: 32px; }
+        .contact-info { display: flex; flex-direction: column; gap: 8px; margin-top: 32px; align-items: center; }
         .contact-info .name { font-size: 24px; font-family: var(--font-calsans); color: var(--color-phosphor-mint); letter-spacing: 0.056em; }
         .contact-info .phone { font-size: 32px; font-weight: 300; color: var(--color-pure-white); text-decoration: none; letter-spacing: -0.017em; }
 
         @media (max-width: 768px) {
             .slide { padding: 64px 16px; }
-            .s1 h1 { font-size: 40px; }
-            .s1 p { font-size: 16px; }
-            h2 { font-size: 36px; }
-            .premium-box { padding: 20px; }
+            .s1 { padding: 64px 16px; text-align: left; }
+            .s1 h1 { font-size: 44px; }
+            h1 { font-size: 44px; }
+            h2 { font-size: 32px; }
+            .premium-box { padding: 24px; }
             ul.elegant-list li { font-size: 15px; }
             .grid-cards { grid-template-columns: 1fr; }
-            .cta-btn { width: 100%; padding: 12px; }
+            .cta-btn { width: 100%; padding: 12px; text-align: center; }
             .price-value { font-size: 40px; }
             .contact-info .phone { font-size: 24px; }
+            .maps-grid { flex-direction: column; }
+            .maps-grid .map-placeholder { height: 250px; }
         }
     </style>
 </head>
@@ -209,10 +237,12 @@
 
     <!-- 01. Обложка -->
     <section class="slide s1">
-        <div class="tag">Эксклюзивный актив</div>
-        <h1>Darino Forest Estate.<br><span class="highlight">1 гектар леса. 20 минут от Москвы.</span></h1>
-        <p>Редкое предложение на Рублёво-Успенском направлении. 4 смежных участка в исторической деревне Дарьино для создания частной резиденции или премиального проекта.</p>
-        <a href="#price" class="cta-btn">Запросить цену и детали</a>
+        <div>
+            <div class="tag">Эксклюзивный актив</div>
+            <h1>Darino Forest Estate.<br><span class="highlight">1 гектар леса. 20 минут от Москвы.</span></h1>
+            <p>Редкое предложение на Рублёво-Успенском направлении. 4 смежных участка в исторической деревне Дарьино для создания частной резиденции или премиального проекта.</p>
+            <a href="#price" class="cta-btn">Запросить цену и детали</a>
+        </div>
     </section>
 
     <!-- 02. О локации -->
@@ -228,13 +258,19 @@
         </div>
     </section>
 
-    <!-- 03. Карта -->
+    <!-- 03. Карты (Яндекс + Кадастр) -->
     <section class="slide">
         <div class="tag">Расположение</div>
         <h2>В сердце Рублёвки</h2>
         <p style="font-size: 16px; font-weight: 400; max-width: 600px; opacity: 0.8; margin-bottom: 8px; color: var(--color-graphite);">Объект находится в 20 км от МКАД. Удобный выезд обеспечивает быстрый доступ к столице в любое время суток.</p>
-        <div class="map-placeholder" style="background-image: url('');">
-            <span>Скриншот кадастровой карты</span>
+        
+        <div class="maps-grid">
+            <div class="map-placeholder" style="background-image: linear-gradient(to bottom, transparent 70%, rgba(7,7,7,0.9)), url('yandex_map.png');">
+                <span style="background: rgba(7,7,7,0.8); padding: 4px 8px; border-radius: 4px;">Яндекс.Карта</span>
+            </div>
+            <div class="map-placeholder" style="background-image: linear-gradient(to bottom, transparent 70%, rgba(7,7,7,0.9)), url('cadastre.png');">
+                <span style="background: rgba(7,7,7,0.8); padding: 4px 8px; border-radius: 4px;">Кадастровая карта</span>
+            </div>
         </div>
     </section>
 
@@ -289,8 +325,9 @@
         <div class="tag">Атмосфера</div>
         <h2>Природа без компромиссов</h2>
         <p style="font-size: 16px; font-weight: 400; max-width: 600px; opacity: 0.8; margin-bottom: 8px; color: var(--color-graphite);">Высокие сосны, чистый воздух и живописный рельеф. Место, где можно создать дом, который станет семейной реликвией на поколения вперед.</p>
-        <div class="photo-placeholder" style="background-image: url(''); height: 50vh;">
-            <span>Фотография участка (сосны)</span>
+        
+        <div class="photo-placeholder" style="background-image: linear-gradient(to bottom, transparent 60%, rgba(7,7,7,0.8)), url('pines.jpg');">
+            <span style="background: rgba(7,7,7,0.8); padding: 4px 8px; border-radius: 4px;">Территория участка</span>
         </div>
     </section>
 
