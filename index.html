@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Darino Forest Estate</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600&family=Montserrat:wght@200;300;400;500;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-dark: #121416;
+            --surface: #1C1F23;
+            --gold: #C5A572;
+            --gold-light: #E2C79A;
+            --text-main: #F3F0EB;
+            --text-muted: #8B8E92;
+            --green-accent: #2A3B33;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background-color: var(--bg-dark);
+            color: var(--text-main);
+        }
+
+        .slide {
+            min-height: 100vh;
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 6% 8%;
+            position: relative;
+            text-align: center;
+            border-bottom: 1px solid rgba(197, 165, 114, 0.1);
+        }
+
+        h1, h2, h3 { font-family: 'Cormorant Garamond', serif; font-weight: 400; line-height: 1.1; }
+        .highlight { color: var(--gold); }
+
+        .tag {
+            border: 1px solid var(--gold);
+            color: var(--gold);
+            padding: 8px 20px;
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            display: inline-block;
+            margin-bottom: 25px;
+        }
+
+        .cta-btn {
+            display: inline-block;
+            background: var(--gold);
+            color: #121416;
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 600;
+            font-size: 1rem;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            text-decoration: none;
+            padding: 20px 50px;
+            margin-top: 40px;
+            transition: background 0.3s;
+        }
+
+        .premium-box {
+            background: var(--surface);
+            border: 1px solid rgba(197, 165, 114, 0.2);
+            padding: 50px;
+            width: 100%;
+            max-width: 900px;
+            margin: 20px auto;
+        }
+
+        ul.elegant-list { list-style: none; text-align: left; margin-top: 20px; }
+        ul.elegant-list li {
+            font-size: 1.2rem;
+            margin-bottom: 20px;
+            padding-left: 30px;
+            position: relative;
+            font-weight: 300;
+            line-height: 1.5;
+        }
+        ul.elegant-list li::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 10px;
+            width: 15px;
+            height: 1px;
+            background: var(--gold);
+        }
+
+        .s1 {
+            background: linear-gradient(to bottom, rgba(18, 20, 22, 0.7), rgba(18, 20, 22, 0.95)), url('https://images.unsplash.com/photo-1500382017468-9049fed747ef?q=80&w=2000&auto=format&fit=crop') center/cover no-repeat;
+        }
+        .s1 h1 { font-size: 4.5rem; margin-bottom: 20px; }
+        .s1 p { font-size: 1.3rem; font-weight: 300; max-width: 700px; margin: 0 auto; opacity: 0.85; line-height: 1.6; }
+
+        h2 { font-size: 3rem; margin-bottom: 30px; max-width: 800px; }
+        
+        .grid-cards { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; width: 100%; max-width: 900px; }
+        .stat-card {
+            background: var(--surface);
+            border-top: 3px solid var(--gold);
+            padding: 40px 20px;
+        }
+        .stat-card .num { font-size: 3rem; font-family: 'Cormorant Garamond', serif; color: var(--text-main); }
+        .stat-card .desc { font-size: 0.9rem; text-transform: uppercase; letter-spacing: 1px; color: var(--text-muted); margin-top: 10px; }
+
+        .map-placeholder, .photo-placeholder {
+            width: 100%;
+            max-width: 800px;
+            height: 400px;
+            background: var(--surface);
+            border: 1px dashed rgba(197, 165, 114, 0.3);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--text-muted);
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            margin-top: 30px;
+            background-size: cover;
+            background-position: center;
+        }
+
+        .s6 { background: var(--green-accent); }
+        .price-value {
+            font-size: 4rem;
+            font-family: 'Cormorant Garamond', serif;
+            color: var(--gold);
+            margin-bottom: 10px;
+        }
+        .price-sub { font-size: 1rem; color: var(--text-muted); text-transform: uppercase; letter-spacing: 1px; margin-bottom: 30px; }
+
+        .contact-info { display: flex; flex-direction: column; gap: 10px; }
+        .contact-info .name { font-size: 1.5rem; font-family: 'Cormorant Garamond', serif; color: var(--gold); }
+        .contact-info .phone { font-size: 2rem; font-weight: 300; color: var(--text-main); text-decoration: none; }
+
+        @media (max-width: 768px) {
+            .slide { padding: 15% 6%; }
+            .s1 h1 { font-size: 2.8rem; }
+            .s1 p { font-size: 1.1rem; }
+            h2 { font-size: 2rem; }
+            .premium-box { padding: 30px; }
+            ul.elegant-list li { font-size: 1rem; }
+            .grid-cards { grid-template-columns: 1fr; }
+            .cta-btn { width: 100%; padding: 15px; }
+            .price-value { font-size: 3rem; }
+            .contact-info .phone { font-size: 1.5rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- 01. Обложка -->
+    <section class="slide s1">
+        <div class="tag">Эксклюзивный актив</div>
+        <h1>Darino Forest Estate.<br><span class="highlight">1 гектар леса. 20 минут от Москвы.</span></h1>
+        <p>Редкое предложение на Рублёво-Успенском направлении. 4 смежных участка в исторической деревне Дарьино для создания частной резиденции или премиального проекта.</p>
+        <a href="#price" class="cta-btn">Запросить цену и детали</a>
+    </section>
+
+    <!-- 02. О локации -->
+    <section class="slide">
+        <div class="tag">Локация</div>
+        <h2>Дарьино — историческая престижность</h2>
+        <div class="premium-box">
+            <ul class="elegant-list">
+                <li>Старинная деревня на Рублёво-Успенском шоссе, исторически излюбленное место отдыха московской интеллигенции.</li>
+                <li>Рядом расположен Храм Николая Чудотворца, создающий особую атмосферу умиротворения и постоянства.</li>
+                <li>Сформированная премиальная инфраструктура: рестораны, спортивные комплексы и закрытые поселки по соседству.</li>
+            </ul>
+        </div>
+    </section>
+
+    <!-- 03. Карта -->
+    <section class="slide">
+        <div class="tag">Расположение</div>
+        <h2>В сердце Рублёвки</h2>
+        <p style="font-size: 1.2rem; font-weight: 300; max-width: 600px; opacity: 0.85; margin-bottom: 20px;">Объект находится в 20 км от МКАД. Удобный выезд обеспечивает быстрый доступ к столице в любое время суток.</p>
+        <!-- Вставьте скрин кадастровой карты: замените url('') на url('файл.jpg') -->
+        <div class="map-placeholder" style="background-image: url('');">
+            <span>Скриншот кадастровой карты</span>
+        </div>
+    </section>
+
+    <!-- 04. Преимущества объекта -->
+    <section class="slide">
+        <div class="tag">Объект</div>
+        <h2>Абсолютная приватность</h2>
+        <div class="premium-box">
+            <ul class="elegant-list">
+                <li>Собственный закрытый мир площадью 1 гектар, скрытый в сосновом лесу.</li>
+                <li>Отсутствие плотной соседской застройки — полная свобода планирования территории.</li>
+                <li>Возможность легального расширения за счет аренды прилегающего леса до 15 Га.</li>
+            </ul>
+        </div>
+    </section>
+
+    <!-- 05. Характеристики -->
+    <section class="slide">
+        <div class="tag">Параметры</div>
+        <h2>Характеристики актива</h2>
+        <div class="grid-cards">
+            <div class="stat-card">
+                <div class="num">4</div>
+                <div class="desc">Смежных участка</div>
+            </div>
+            <div class="stat-card">
+                <div class="num">100</div>
+                <div class="desc">Соток ИЖС</div>
+            </div>
+            <div class="stat-card">
+                <div class="num">15 Га</div>
+                <div class="desc">Лес в аренду</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 06. Правовая информация -->
+    <section class="slide">
+        <div class="tag">Документы</div>
+        <h2>Прозрачный правовой статус</h2>
+        <div class="premium-box">
+            <ul class="elegant-list">
+                <li>Категория земли: Земли населённых пунктов.</li>
+                <li>Разрешённое использование: ИЖС (индивидуальное жилищное строительство).</li>
+                <li>Кадастровые номера: 50:20:0041104:287, 289, 290, 291.</li>
+            </ul>
+        </div>
+    </section>
+
+    <!-- 07. Атмосфера / Фото участка -->
+    <section class="slide">
+        <div class="tag">Атмосфера</div>
+        <h2>Природа без компромиссов</h2>
+        <p style="font-size: 1.2rem; font-weight: 300; max-width: 600px; opacity: 0.85; margin-bottom: 20px;">Высокие сосны, чистый воздух и живописный рельеф. Место, где можно создать дом, который станет семейной реликвией на поколения вперед.</p>
+        <!-- Вставьте реальное фото сосен: замените url('') на url('pines.jpg') -->
+        <div class="photo-placeholder" style="background-image: url(''); height: 50vh;">
+            <span>Фотография участка (сосны)</span>
+        </div>
+    </section>
+
+    <!-- 08. Концепция 1 -->
+    <section class="slide">
+        <div class="tag">Концепция 01</div>
+        <h2>Частная резиденция</h2>
+        <div class="premium-box">
+            <ul class="elegant-list">
+                <li>Создание главного дома площадью от 1000 кв.м.</li>
+                <li>Гостевой дом, SPA-комплекс, закрытые зоны отдыха и бассейны.</li>
+                <li>Идеальное решение для семьи, ценящей масштаб, тишину и статус.</li>
+            </ul>
+        </div>
+    </section>
+
+    <!-- 09. Концепция 2 -->
+    <section class="slide">
+        <div class="tag">Концепция 02</div>
+        <h2>Инвестиционный проект</h2>
+        <div class="premium-box">
+            <ul class="elegant-list">
+                <li>Девелопмент закрытого мини-посёлка из нескольких элитных домов.</li>
+                <li>Высокий чек продажи благодаря уникальному лесному окружению.</li>
+                <li>Создание собственного бренда недвижимости в премиальном сегменте.</li>
+            </ul>
+        </div>
+    </section>
+
+    <!-- 10. Инвестиционная ценность (ROI) -->
+    <section class="slide">
+        <div class="tag">Возврат инвестиций</div>
+        <h2>Рост капитала и ликвидность</h2>
+        <div class="premium-box">
+            <ul class="elegant-list">
+                <li>Крупные лесные массивы рядом с МКАД не появляются заново — их базовая стоимость стабильно растет.</li>
+                <li>Развитие инфраструктуры Рублёво-Успенского направления гарантирует постоянный спрос на элитную землю.</li>
+                <li>Реализация концепции мини-посёлка или продажа готовой усадьбы обеспечивает кратный возврат вложений (ROI).</li>
+            </ul>
+        </div>
+    </section>
+
+    <!-- 11. Стоимость -->
+    <section class="slide s6" id="price">
+        <div class="tag">Предложение</div>
+        <h2>Стоимость объекта</h2>
+        <div class="price-value">280 000 000 ₽</div>
+        <div class="price-sub">4 участка · 100 соток · ИЖС · + право аренды 15 Га леса</div>
+        <a href="#contact" class="cta-btn">Записаться на закрытый показ</a>
+    </section>
+
+    <!-- 12. Контакты -->
+    <section class="slide" id="contact">
+        <div class="tag">Контакты</div>
+        <h2>Ваше следующее поколение недвижимости</h2>
+        <p style="font-size: 1.2rem; font-weight: 300; opacity: 0.8; max-width: 600px; margin-bottom: 40px;">Свяжитесь с нами для организации приватного просмотра и получения подробной информации.</p>
+        
+        <div class="contact-info">
+            <span style="font-size: 0.9rem; text-transform: uppercase; letter-spacing: 1px; color: var(--text-muted);">Ваш персональный брокер</span>
+            <span class="name">Татьяна</span>
+            <a href="tel:+79262242719" class="phone">+7 926 224-27-19</a>
+        </div>
+    </section>
+
+</body>
+</html>
